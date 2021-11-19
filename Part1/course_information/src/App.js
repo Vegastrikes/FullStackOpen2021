@@ -2,12 +2,18 @@ import React from 'react'
 
 const App = () => {
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const part1 = {
+    name: 'Fundamentals of React',
+    exercises: 10
+  }
+  const part2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
+  const part3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
 
   const Header = (props) => {
     return (
@@ -17,9 +23,9 @@ const App = () => {
   const Content = (props) => {
     return (
       <div>
-        <Part part={props.part1} exercise={props.exercise1}/>
-        <Part part={props.part2} exercise={props.exercise2}/>
-        <Part part={props.part3} exercise={props.exercise3}/>
+        <Part part={props.part1Name} exercise={props.part1Exercises}/>
+        <Part part={props.part2Name} exercise={props.part2Exercises}/>
+        <Part part={props.part3Name} exercise={props.part3Exercises}/>
       </div>
     )
   }
@@ -38,10 +44,11 @@ const App = () => {
     <div>
       <Header course={course}/>
       <Content 
-      part1={part1} exercise1={exercises1} 
-      part2={part2} exercise2={exercises2} 
-      part3={part3} exercise3={exercises3}/>
-      <Total exercise1={exercises1} exercise2={exercises2} exercise3={exercises3}/>
+      part1Name={part1.name} part1Exercises={part1.exercises}
+      part2Name={part2.name} part2Exercises={part2.exercises}
+      part3Name={part3.name} part3Exercises={part3.exercises}
+      />
+      <Total exercise1={part1.exercises} exercise2={part2.exercises} exercise3={part3.exercises}/>
     </div>
   )
 }
